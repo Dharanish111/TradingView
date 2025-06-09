@@ -1,0 +1,1486 @@
+/* Container for the entire section */
+#totalProfit {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+/* Headings inside #totalProfit */
+#totalProfit h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 35px;
+
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Flex layout inside #totalProfit */
+#totalProfit .row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#totalProfit .col {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Base card styling inside #totalProfit */
+#totalProfit .card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+
+}
+
+/* Hover effect for cards */
+#totalProfit .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Left border styles inside #totalProfit */
+#totalProfit .card.bg-success {
+  border-left: 6px solid #218838; /* Darker green */
+  background-color: #91faa9; /* Green */
+}
+
+#totalProfit .card.bg-success:hover {
+    border-left: 6px solid #91faa9; /* Darker green */
+    background-color: #218838; /* Green */
+  }
+
+#totalProfit .card.bg-primary {
+  border-left: 6px solid #004085; /* Dark navy */
+  background-color: #9dc7f5; /* Blue */
+}
+
+#totalProfit .card.bg-primary:hover {
+    border-left: 6px solid #9dc7f5; /* Dark navy */
+    background-color: #004085; /* Blue */
+  }
+
+#totalProfit .card.bg-warning {
+  border-left: 6px solid #ffbf00; /* Deep amber */
+  background-color: #fce18f; /* Yellow */
+  color: #212529; /* Make text dark for better contrast */
+}
+
+#totalProfit .card.bg-warning:hover {
+    border-left: 6px solid #fce18f; /* Deep amber */
+    background-color: #ffbf00; /* Yellow */
+    color: #212529; /* Make text dark for better contrast */
+  }
+
+/* Card inner layout inside #totalProfit */
+#totalProfit .card-body {
+  padding: 0.5rem;
+}
+
+#totalProfit .card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+#totalProfit .card-text {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding-left: 1.5rem;
+}
+
+/* Responsive behavior for #totalProfit */
+@media (max-width: 768px) {
+  #totalProfit .row {
+    flex-direction: column;
+  }
+
+  #totalProfit .col {
+    width: 100%;
+  }
+}
+
+/* Monthly Profit Section */
+#monthlyProfit {
+    padding: 2rem;
+    background-color: #ffffff; /* Light background for the section */
+    border-radius: 10px;
+}
+
+#monthlyProfit h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#monthlyProfit p {
+    font-size: 16px;
+    color: #6c757d; /* Slightly lighter gray for paragraph */
+}
+
+/* Flex layout for cards inside monthlyProfit */
+#monthlyProfit .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside monthlyProfit */
+#monthlyProfit .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in monthlyProfit */
+#monthlyProfit .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#monthlyProfit .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Text Styles */
+#monthlyProfit .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000; /* White text for card title */
+}
+
+/* Card text styles with larger font size */
+#monthlyProfit .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000; /* White text for values */
+}
+
+/* Color Variations for Different Cards */
+#monthlyProfit .bg-info {
+    border-left: 6px solid #288df8; /* Dark navy */
+    background-color: #c7e1fd; /* Info card - light blue */
+}
+
+#monthlyProfit .bg-info:hover {
+    border-left: 6px solid #c7e1fd; /* Dark navy */
+    background-color: #288df8; /* Info card - light blue */
+}
+
+
+#monthlyProfit .bg-secondary {
+    border-left: 6px solid #f738c7; /* Pink border */
+    background-color: #f8ade5;      /* Light pink background */
+}
+
+#monthlyProfit .bg-secondary:hover {
+    border-left: 6px solid #f8ade5; /* Light pink border */
+    background-color: #f738c7;      /* Pink background */
+}
+
+#monthlyProfit .bg-success {
+    border-left: 6px solid #fcdc24; /* Yellow border */
+    background-color: #fcf1b2; /* Light yellow background */
+}
+
+#monthlyProfit .bg-success:hover {
+    border-left: 6px solid #fcf1b2; /* Light yellow border */
+    background-color: #fcdc24; /* Yellow background */
+}
+
+/* Optional: Additional Colors for Other Cards */
+#monthlyProfit .bg-warning {
+    background-color: #ffc107; /* Warning card - yellow */
+}
+
+#monthlyProfit .bg-danger {
+    background-color: #dc3545; /* Danger card - red */
+}
+
+
+/* Daily Profit Section */
+#dailyProfit {
+    padding: 2rem;
+    background-color: #ffffff; /* Light background for the section */
+    border-radius: 10px;
+}
+
+#dailyProfit h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#dailyProfit p {
+    font-size: 16px;
+    color: #6c757d; /* Slightly lighter gray for paragraph */
+}
+
+/* Flex layout for cards inside dailyProfit */
+#dailyProfit .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside dailyProfit */
+#dailyProfit .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in dailyProfit */
+#dailyProfit .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#dailyProfit .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Text Styles */
+#dailyProfit .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000; /* White text for card title */
+}
+
+/* Card text styles with larger font size */
+#dailyProfit .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000; /* White text for values */
+}
+
+/* Color Variations for Different Cards */
+#dailyProfit .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyProfit .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#dailyProfit .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyProfit .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#dailyProfit .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyProfit .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#dailyProfit .bg-warning {
+    border-left: 6px solid #ff5100;
+    background-color: #ffd7c5;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyProfit .bg-warning:hover {
+    border-left: 6px solid #ffd7c5;
+    background-color: #ff5100;
+}
+
+#dailyProfit .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #ffa9b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyProfit .bg-danger:hover {
+    border-left: 6px solid #ffa9b2;
+    background-color: #dc3545;
+}
+
+#dailyProfit .bg-weekend {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyProfit .bg-weekend:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#dailyProfit .bg-success1 {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyProfit .bg-success1:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+/* Total Subscribers Section */
+#totalSubs {
+    padding: 2rem;
+    background-color: #ffffff; /* Light background for the section */
+    border-radius: 10px;
+}
+
+#totalSubs h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#totalSubs p {
+    font-size: 16px;
+    color: #6c757d; /* Slightly lighter gray for paragraph */
+}
+
+/* Flex layout for cards inside totalSubs */
+#totalSubs .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside totalSubs */
+#totalSubs .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in totalSubs */
+#totalSubs .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#totalSubs .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Text Styles */
+#totalSubs .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000; /* White text for card title */
+}
+
+/* Card text styles with larger font size */
+#totalSubs .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000; /* White text for values */
+}
+
+#totalSubs .bg-primary {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#totalSubs .bg-primary:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#totalSubs .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#totalSubs .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#totalSubs .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#totalSubs .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#totalSubs .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#totalSubs .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+#totalSubs .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#totalSubs .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#totalSubs .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#totalSubs .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+
+/* Monthly Subscribers Section */
+#monthlySubs {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#monthlySubs h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#monthlySubs p {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Flex layout for cards inside monthlySubs */
+#monthlySubs .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside monthlySubs */
+#monthlySubs .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in monthlySubs */
+#monthlySubs .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#monthlySubs .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+#monthlySubs .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+/* Card Text */
+#monthlySubs .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+#monthlySubs .bg-primary {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlySubs .bg-primary:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#monthlySubs .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlySubs .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#monthlySubs .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlySubs .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#monthlySubs .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlySubs .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#monthlySubs .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlySubs .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#monthlySubs .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlySubs .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+
+/* Daily Subscribers Section */
+#dailySubs {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#dailySubs h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#dailySubs p {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Flex layout for cards inside dailySubs */
+#dailySubs .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside dailySubs */
+#dailySubs .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in dailySubs */
+#dailySubs .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#dailySubs .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+#dailySubs .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+/* Card Text */
+#dailySubs .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+#dailySubs .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailySubs .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#dailySubs .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailySubs .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#dailySubs .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailySubs .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#dailySubs .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailySubs .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#dailySubs .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailySubs .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+
+/* Daily Demo Subscribers Section */
+#dailyDemo {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#dailyDemo h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#dailyDemo p {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Flex layout for cards inside dailyDemo */
+#dailyDemo .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside dailyDemo */
+#dailyDemo .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in dailyDemo */
+#dailyDemo .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#dailyDemo .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+#dailyDemo .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+/* Card Text */
+#dailyDemo .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+#dailyDemo .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyDemo .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#dailyDemo .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyDemo .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#dailyDemo .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyDemo .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#dailyDemo .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyDemo .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#dailyDemo .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyDemo .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+
+/* Monthly Revenue Section */
+#monthlyRevenue {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#monthlyRevenue h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#monthlyRevenue p {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Flex layout for cards inside monthlyRevenue */
+#monthlyRevenue .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside monthlyRevenue */
+#monthlyRevenue .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in monthlyRevenue */
+#monthlyRevenue .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#monthlyRevenue .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+#monthlyRevenue .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+/* Card Text */
+#monthlyRevenue .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+#monthlyRevenue .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyRevenue .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#monthlyRevenue .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyRevenue .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#monthlyRevenue .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyRevenue .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#monthlyRevenue .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyRevenue .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#monthlyRevenue .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyRevenue .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+
+/* Monthly Commission Section */
+#monthlyCommission {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#monthlyCommission h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#monthlyCommission p {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Flex layout for cards inside monthlyCommission */
+#monthlyCommission .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside monthlyCommission */
+#monthlyCommission .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in monthlyCommission */
+#monthlyCommission .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#monthlyCommission .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+#monthlyCommission .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+/* Card Text */
+#monthlyCommission .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+#monthlyCommission .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyCommission .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#monthlyCommission .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyCommission .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#monthlyCommission .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyCommission .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#monthlyCommission .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyCommission .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#monthlyCommission .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#monthlyCommission .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+
+/* Daily Revenue Section */
+#dailyRevenue {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#dailyRevenue h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#dailyRevenue p {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Flex layout for cards inside dailyRevenue */
+#dailyRevenue .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside dailyRevenue */
+#dailyRevenue .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in dailyRevenue */
+#dailyRevenue .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#dailyRevenue .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+#dailyRevenue .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+/* Card Text */
+#dailyRevenue .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+#dailyRevenue .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyRevenue .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#dailyRevenue .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyRevenue .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#dailyRevenue .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyRevenue .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#dailyRevenue .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyRevenue .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#dailyRevenue .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyRevenue .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+
+/* Daily Commission Section */
+#dailyCommission {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#dailyCommission h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#dailyCommission p {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Flex layout for cards inside dailyCommission */
+#dailyCommission .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Column styling inside dailyCommission */
+#dailyCommission .col {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+}
+
+/* Card styles specifically in dailyCommission */
+#dailyCommission .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+#dailyCommission .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+#dailyCommission .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+/* Card Text */
+#dailyCommission .card-text {
+    font-size: 24px;
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+#dailyCommission .bg-info {
+    border-left: 6px solid #288df8;
+    background-color: #c7e1fd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyCommission .bg-info:hover {
+    border-left: 6px solid #c7e1fd;
+    background-color: #288df8;
+}
+
+#dailyCommission .bg-secondary {
+    border-left: 6px solid #fcdc24;
+    background-color: #fcf1b2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyCommission .bg-secondary:hover {
+    border-left: 6px solid #fcf1b2;
+    background-color: #fcdc24;
+}
+
+#dailyCommission .bg-success {
+    border-left: 6px solid #28a745;
+    background-color: #d4edda;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyCommission .bg-success:hover {
+    border-left: 6px solid #d4edda;
+    background-color: #28a745;
+}
+
+#dailyCommission .bg-warning {
+    border-left: 6px solid #fc6603;
+    background-color: #ffb888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyCommission .bg-warning:hover {
+    border-left: 6px solid #ffb888;
+    background-color: #fc6603;
+}
+
+#dailyCommission .bg-danger {
+    border-left: 6px solid #dc3545;
+    background-color: #fa8c97;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#dailyCommission .bg-danger:hover {
+    border-left: 6px solid #fa8c97;
+    background-color: #dc3545;
+}
+
+.card small {
+    display: block;
+    margin-top: 8px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(20, 20, 20, 0.85); /* soft white for dark cards */
+}
+
+.card.bg-warning small,
+.card.bg-light small,
+.card.bg-white small {
+    color: #333; /* dark text for light backgrounds */
+}
+
+.number {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #111;
+}
+
+
+.change {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  
+  .change.up {
+    background-color: #e6f7ec;
+    color: #28a745;
+  }
+  
+  .change.down {
+    background-color: #fdecea;
+    color: #dc3545;
+  }
+  
+
+
+
+
+/* Specific styles for the Total Profit chart */
+#totalProfitChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific style for the Monthly Profit Chart */
+#monthlyProfitChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for Daily Profit Chart */
+#dailyProfitChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling specifically for Total Subscribers Chart */
+#totalSubsChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#monthlySubsChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for Daily Paid Subscribers Line Chart */
+#dailySubsChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for Daily Demo Subscribers Bar Chart */
+#dailyDemoChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Monthly Revenue Mountain Chart Style */
+#monthlyRevenueChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Monthly Commission Bar Chart Style */
+#monthlyCommissionChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Daily Revenue Stepline Chart Style */
+#dailyRevenueChart {
+    width: 100% !important;
+    height: 350px;
+    max-width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling specifically for the Daily Commission Graph (canvas) */
+#dailyCommissionChart {
+    width: 100% !important;      /* Ensures the graph spans the full width of its container */
+    height: 400px;               /* Set a fixed height for the graph */
+    max-width: 100%;             /* Prevent overflow if screen size is smaller */
+    margin-top: 30px;            /* Add some space between the graph and the elements above it */
+    border-radius: 8px;          /* Smooth corners for a more polished look */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow around the graph */
+}
+
+/* Optional: Hover effect or additional styling specific to this canvas */
+#dailyCommissionChart:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Slightly increase the shadow when hovered */
+}
+
+

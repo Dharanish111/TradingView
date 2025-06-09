@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="db.js">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js financial plugin (for Candlestick charts) -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@3.0.0/dist/chartjs-chart-financial.min.js"></script>
+</head>
+<body>
+    <script src="db.js"></script>
+    <div class="dashboard-header">
+        <h1>ADMIN DASHBOARD</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="User Referral ID/Phone/email/Search">
+        </div>
+    </div>
+    <div style="display: flex;">
+        <div class="sidebar">
+            <img src="Images/logo.png" alt="Logo" class="logo">        
+            <ul>
+                <h3><i class="fas fa-user icon-user"></i> <span id="userId"></span></h3>
+                <h3><i class="fas fa-user-tag icon-referral"></i> <span id="referralId"></span></h3>
+                <li><a href="#"><i class="fas fa-users icon-users"></i> Main users List</a></li>
+                <li><a href="#"><i class="fas fa-table icon-table"></i> Table Control</a></li>
+                <li><a href="#"><i class="fas fa-money-bill-wave icon-money"></i> Total Paid subscribers List</a></li>
+                <li><a href="#"><i class="fas fa-calendar-day icon-calendar"></i> Daily Paid subscribers List</a></li>
+                <li><a href="#" onclick="showContent('content-demo')"><i class="fas fa-calendar-check icon-calendar-check"></i> Daily Demo subscribers list</a></li>
+                <li><a href="#"><i class="fas fa-users-cog icon-users-cog"></i> Total Demo subscribers list</a></li>
+                <li><a href="#"><i class="fas fa-home icon-home"></i> Home Page Control</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="metrics">
+                <div class="metric-box">
+                    <i class="fas fa-wallet icon"></i>
+                    <h3>Total Profit</h3>
+                    <p>₹10,000</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-calendar-day icon"></i>
+                    <h3>Monthly Profit</h3>
+                    <p>₹1,000</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-calendar-alt icon"></i>
+                    <h3>Daily Profit</h3>
+                    <p>₹50</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-calendar-day icon"></i>
+                    <h3>Monthly Revenue</h3>
+                    <p>₹5,000</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-credit-card icon"></i>
+                    <h3>Monthly Commission to Pay</h3>
+                    <p>₹500</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-rupee-sign icon"></i>
+                    <h3>Daily Revenue</h3>
+                    <p>₹200</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-money-bill-wave icon"></i>
+                    <h3>Daily Commission to Pay</h3>
+                    <p>₹20</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-users icon"></i>
+                    <h3>Total Paid Subscribers Count</h3>
+                    <p>100</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-users-cog icon"></i>
+                    <h3>Monthly Paid Subscribers Count</h3>
+                    <p>20</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-user-check icon"></i>
+                    <h3>Daily Paid Subscribers Count</h3>
+                    <p>5</p>
+                </div>
+                <div class="metric-box">
+                    <i class="fas fa-user-plus icon"></i>
+                    <h3>Daily Demo Subscribers Count</h3>
+                    <p>10</p>
+                </div>
+            </div>        
+
+            <!-- Add Graphs -->
+            <div class="graphs">
+                <!-- Line Chart -->
+                <div class="chart-container" style="width: 49%; float: left;">
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <!-- Step Line Chart -->
+                <div class="chart-container" style="width: 49%; float: left;">
+                    <canvas id="stepLineChart"></canvas>
+                </div>
+                <!-- Bar Chart -->
+                <div class="chart-container" style="width: 50%; float: right;">
+                    <canvas id="barChart"></canvas>
+                </div>
+                <!-- Pie Chart -->
+                <div class="chart-container" style="width: 45%; float: right;">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section for Daily Demo Subscribers List -->
+        <div class="content" id="content-demo" style="display: none;">
+            <h2>Daily Demo Subscribers List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SI.No</th>
+                        <th>Date</th>
+                        <th>Trading View Id</th>
+                        <th>Referral Id</th>
+                        <th>Phone Number</th>
+                        <th>Email Id</th>
+                        <th>Expiry Date</th>
+                        <th>Remaining Days</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2023-10-27</td>
+                        <td>TV111</td>
+                        <td>REF789</td>
+                        <td>111-222-3333</td>
+                        <td>demo@example.com</td>
+                        <td>2023-10-30</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>  
+
+    <script src="db.js"></script>
+
+    <script>
+        // Sample data for Step Line Chart
+        const stepLineData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Monthly Profit',
+                data: [1000, 1200, 1500, 1800, 2000, 2500],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0,
+                stepped: true, // This makes the chart a step line
+                borderWidth: 2
+            }]
+        };
+
+        const stepLineConfig = {
+            type: 'line',
+            data: stepLineData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Profit (₹)'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render the Step Line Chart
+        const stepLineChart = new Chart(document.getElementById('stepLineChart'), stepLineConfig);
+    </script>
+</body>
+</html>

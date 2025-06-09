@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="db.js">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@3.0.0/dist/chartjs-chart-financial.min.js"></script>
+</head>
+<body>
+    <script src="db.js"></script>
+    <div class="dashboard-header">
+        <img src="Images/logo.png" alt="Logo" class="logo">        
+
+        <h1>ADMIN DASHBOARD</h1>
+        <div class="hamburger-container" onclick="toggleSidebar()">
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..">
+        </div>
+        
+    </div>
+    <div style="display: flex;">
+        <div class="sidebar">
+            <div class="profile-container">
+                <div class="profile-info">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Profile" id="profilePic" class="profile-pic" />
+                    <div class="text-info">
+                        <h3><i class="fas fa-user icon-user"></i> Raju</h3>
+                        <h3><i class="fas fa-user-tag icon-referral"></i> 1234</h3>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li><a href="#" onclick="showContent('main-content')"><i class="fas fa-home icon-home"></i> Home</a></li>
+                <li><a href="#" onclick="showContent('mainUsersList')"><i class="fas fa-users icon-users"></i> Main users</a></li>
+                <li><a href="#" onclick="showContent('content-totalpaid')"><i class="fas fa-calendar-check icon-calendar-check"></i> Total Paid subscribers</a></li>
+                <li><a href="#" onclick="showContent('content-dailypaid')"><i class="fas fa-calendar-check icon-calendar-check"></i> Daily Paid subscribers</a></li>
+                <li><a href="#" onclick="showContent('content-demo')"><i class="fas fa-calendar-check icon-calendar-check"></i> Daily Demo subscribers</a></li>
+                <li><a href="#" onclick="showContent('content-totaldemo')"><i class="fas fa-calendar-check icon-calendar-check"></i> Total Demo subscribers</a></li>
+                <li><a href="#" onclick="signOut()"><i class="fas fa-sign-out-alt icon-home"></i> Signout</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <!-- Main Content (metrics and graphs) -->
+            <div id="main-content" class="content-section">
+                <div class="metrics">
+                    <div class="metric-box" style="background-color: #ffcccc; border-top: 5px solid #ff3333;">
+                        <i class="fas fa-wallet icon"></i>
+                        <h3>Total Profit</h3>
+                        <p>₹10,000</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #ffcc99; border-top: 5px solid #ff9966;">
+                        <i class="fas fa-calendar-day icon"></i>
+                        <h3>Monthly Profit</h3>
+                        <p>₹1,000</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #ffff99; border-top: 5px solid #cccc33;">
+                        <i class="fas fa-calendar-alt icon"></i>
+                        <h3>Daily Profit</h3>
+                        <p>₹50</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #ccffcc; border-top: 5px solid #33cc33;">
+                        <i class="fas fa-calendar-day icon"></i>
+                        <h3>Monthly Revenue</h3>
+                        <p>₹5,000</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #ffdfc5; border-top: 5px solid #f39c54;">
+                        <i class="fas fa-credit-card icon"></i>
+                        <h3>Monthly Commission to Pay</h3>
+                        <p>₹500</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #cce6ff; border-top: 5px solid #3399ff;">
+                        <i class="fas fa-rupee-sign icon"></i>
+                        <h3>Daily Revenue</h3>
+                        <p>₹200</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #e6ccff; border-top: 5px solid #9966cc;">
+                        <i class="fas fa-money-bill-wave icon"></i>
+                        <h3>Daily Commission to Pay</h3>
+                        <p>₹20</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #f5f3dd; border-top: 5px solid #d6ce76;">
+                        <i class="fas fa-rupee-sign icon"></i>
+                        <h3>Monthly Revenue</h3>
+                        <p>10</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #ffccff; border-top: 5px solid #ff66cc;">
+                        <i class="fas fa-users icon"></i>
+                        <h3>Total Paid Subscribers Count</h3>
+                        <p>100</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #e6ffcc; border-top: 5px solid #66ff66;">
+                        <i class="fas fa-users-cog icon"></i>
+                        <h3>Monthly Paid Subscribers Count</h3>
+                        <p>20</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #fff7cc; border-top: 5px solid #ffcc00;">
+                        <i class="fas fa-user-check icon"></i>
+                        <h3>Daily Paid Subscribers Count</h3>
+                        <p>5</p>
+                    </div>
+                    <div class="metric-box" style="background-color: #f0e68c; border-top: 5px solid #b8860b;">
+                        <i class="fas fa-user-plus icon"></i>
+                        <h3>Daily Demo Subscribers Count</h3>
+                        <p>10</p>
+                    </div>
+                </div>
+                
+
+                <!-- Graphs (charts) -->
+                <div class="graphs">
+                    <!-- Line Chart -->
+                    <div class="chart-container" style="width: 48%; float: left;">
+                        <canvas id="lineChart" width="400" height="230"></canvas>
+                    </div>
+                    <!-- Step Line Chart -->
+                    <div class="chart-container" style="width: 48%; float: left;">
+                        <canvas id="stepLineChart" width="400" height="230"></canvas> <!-- Set explicit size -->
+                    </div>
+                    <!-- Bar Chart -->
+                    <div class="chart-container" style="width: 50%; float: right;">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <!-- Pie Chart -->
+                    <div class="chart-container" style="width: 45%; float: right;">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- Content Section for Daily Demo Subscribers List -->
+            <div id="content-demo" class="content-section" style="display: none; margin-top: -50px; width: 1010px">
+                <h2 class="banner-style">Daily Demo Subscribers List</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Date</th>
+                            <th>Trading View Id</th>
+                            <th>Referral Id</th>
+                            <th>Phone Number</th>
+                            <th>Email Id</th>
+                            <th>Expiry Date</th>
+                            <th>Remaining Days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2023-10-27</td>
+                            <td>TV111</td>
+                            <td>REF789</td>
+                            <td>111-222-3333</td>
+                            <td>raju@gmail.com</td>
+                            <td>2023-10-30</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2023-10-28</td>
+                            <td>TV112</td>
+                            <td>REF790</td>
+                            <td>444-555-6666</td>
+                            <td>sita@gmail.com</td>
+                            <td>2023-10-31</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2023-10-29</td>
+                            <td>TV113</td>
+                            <td>REF791</td>
+                            <td>777-888-9999</td>
+                            <td>amit@gmail.com</td>
+                            <td>2023-11-01</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2023-10-30</td>
+                            <td>TV114</td>
+                            <td>REF792</td>
+                            <td>123-456-7890</td>
+                            <td>rahul@gmail.com</td>
+                            <td>2023-11-02</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>2023-10-31</td>
+                            <td>TV115</td>
+                            <td>REF793</td>
+                            <td>987-654-3210</td>
+                            <td>neha@gmail.com</td>
+                            <td>2023-11-03</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>2023-11-01</td>
+                            <td>TV116</td>
+                            <td>REF794</td>
+                            <td>555-666-7777</td>
+                            <td>kiran@gmail.com</td>
+                            <td>2023-11-04</td>
+                            <td>2</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Main Users List -->
+            <div id="mainUsersList" class="content-section" style="display: none; width: 1010px; margin-top: 0px;">
+                <h2>Main Users List</h2>
+                <div style="position: relative; float: right; transform: translateY(-150%);">
+                    <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchReferral()" style="height: 35px; width: 200px; border-radius: 20px; padding-left: 10px; padding-right: 10px; box-shadow: 0 5px 10px rgba(24, 24, 24, 0.3);">
+                    <i class="fa fa-search" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"></i>
+                </div>
+                                  
+                    <table id="referralTable" style="width: 100%; margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th>Referral ID</th>
+                                <th>Name</th>
+                                <th>Trading ID</th>
+                                <th>Email</th>
+                                <th>Subscriber Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="referralTableBody">
+                            <!-- Sample Referral IDs, in real scenario, these will be dynamically generated from a database -->
+                            <tr>
+                                <td><a href="#" onclick="showSubscribers('REF123')" style="text-decoration: none; font-weight: bold;">REF123</a></td>
+                                <td>Ramu</td>
+                                <td>TD12345</td>
+                                <td>ramu@gmail.com</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="showSubscribers('REF456')" style="text-decoration: none; font-weight: bold;">REF456</a></td>
+                                <td>Ramu</td>
+                                <td>TD67890</td>
+                                <td>ramu@gmail.com</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="showSubscribers('REF789')" style="text-decoration: none; font-weight: bold;">REF789</a></td>
+                                <td>Ramu</td>
+                                <td>TD11223</td>
+                                <td>ramu@gmail.com</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="showSubscribers('REF101')" style="text-decoration: none; font-weight: bold;">REF101</a></td>
+                                <td>Ramu</td>
+                                <td>TD44556</td>
+                                <td>ramu@gmail.com</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="showSubscribers('REF102')" style="text-decoration: none; font-weight: bold;">REF102</a></td>
+                                <td>Ramu</td>
+                                <td>TD78901</td>
+                                <td>ramu@gmail.com</td>
+                                <td>12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <div id="noResultsMessage" style="display: none; color: red; text-align: center;">No Referral IDs found.</div>
+            </div>
+
+            <!-- Referral Subscribers List -->
+            <div id="content-referralSubscribersList" style="display: none; width: 1030px;">
+                <h2>Subscribers under Referral ID: <span id="referralIdDisplay"></span></h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Subscriber ID</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Subscription Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscriberTableBody">
+                        <!-- Subscribers will be dynamically inserted here -->
+                    </tbody>
+                </table>
+                <button class="styled-button" onclick="backToMainUsersList()">Back to Main Users List</button>
+            </div>
+
+
+            <!-- Content Section for Total Paid subscribers List -->
+            <div id="content-totalpaid" class="content-section" style="display: none; margin-top: -50px;">
+                <h2 class="banner-style">Total Paid subscribers List</h2>
+                
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Date</th>
+                            <th>Referral Id</th>
+                            <th>Trading View Id</th>
+                            <th>Phone Number</th>
+                            <th>Email Id</th>
+                            <th>Phone</th>
+                            <th>Pricing</th>
+                            <th>Paid confirm</th>
+                            <th>Commission</th>
+                            <th>Expiry Date</th>
+                            <th>Remaining Days</th>
+                            <th>Action</th>                          
+                        </tr>
+                    </thead>
+
+                    <div style="position: relative; float: left; transform: translateY(-30%);">
+                        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchReferral()" style="height: 35px; width: 200px; border-radius: 20px; padding-left: 10px; padding-right: 10px; box-shadow: 0 1px 2px #2b6180;">
+                        <i class="fa fa-search" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"></i>
+                    </div>
+
+                    <!-- Add Member Button -->
+                   <button id="addMemberBtn" class="btn" onclick="openAddMemberForm()">Add New Member</button>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>23-10-27</td>
+                            <td>TV111</td>
+                            <td>REF789</td>
+                            <td>111-222-3333</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-10-30</td>
+                            <td>3</td>
+                            <td>Yes</td>
+                            <td>₹5</td>
+                            <td>24-10-27</td>
+                            <td>355</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>23-10-28</td>
+                            <td>TV112</td>
+                            <td>REF790</td>
+                            <td>444-555-6666</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-10-31</td>
+                            <td>2</td>
+                            <td>No</td>
+                            <td>₹10</td>
+                            <td>24-10-28</td>
+                            <td>356</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>3</td>
+                            <td>23-10-29</td>
+                            <td>TV113</td>
+                            <td>REF791</td>
+                            <td>777-888-9999</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-01</td>
+                            <td>1</td>
+                            <td>Yes</td>
+                            <td>₹15</td>
+                            <td>25-10-29</td>
+                            <td>357</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>4</td>
+                            <td>23-10-30</td>
+                            <td>TV114</td>
+                            <td>REF792</td>
+                            <td>888-999-0000</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-02</td>
+                            <td>5</td>
+                            <td>No</td>
+                            <td>₹20</td>
+                            <td>26-10-30</td>
+                            <td>358</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>5</td>
+                            <td>23-10-31</td>
+                            <td>TV115</td>
+                            <td>REF793</td>
+                            <td>999-000-1111</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-03</td>
+                            <td>4</td>
+                            <td>Yes</td>
+                            <td>₹25</td>
+                            <td>27-10-31</td>
+                            <td>359</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>6</td>
+                            <td>23-11-01</td>
+                            <td>TV116</td>
+                            <td>REF794</td>
+                            <td>222-333-4444</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-04</td>
+                            <td>3</td>
+                            <td>No</td>
+                            <td>₹30</td>
+                            <td>28-11-01</td>
+                            <td>360</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- Modal Structure for View Details -->
+            <div id="viewModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <h3>Subscriber Details</h3>
+                    <p id="modalDetails">Loading details...</p>
+                </div>
+            </div>
+
+            <!-- Modal Structure for Add Member -->
+            <div id="addMemberModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeAddMemberForm()">&times;</span>
+                    <h3>Add New Member</h3>
+                    <form id="addMemberForm">
+                        <label for="newDate">Date:</label>
+                        <input type="text" id="newDate" name="date" required><br>
+                        
+                        <label for="newReferralId">Referral Id:</label>
+                        <input type="text" id="newReferralId" name="referralId" required><br>
+                        
+                        <label for="newTradingViewId">Trading View Id:</label>
+                        <input type="text" id="newTradingViewId" name="tradingViewId" required><br>
+                        
+                        <label for="newPhoneNumber">Phone Number:</label>
+                        <input type="text" id="newPhoneNumber" name="phoneNumber" required><br>
+                        
+                        <label for="newEmailId">Email Id:</label>
+                        <input type="email" id="newEmailId" name="emailId" required><br>
+                        
+                        <label for="newPhone">Phone:</label>
+                        <input type="text" id="newPhone" name="phone" required><br>
+                        
+                        <label for="newPricing">Pricing:</label>
+                        <input type="text" id="newPricing" name="pricing" required><br>
+                        
+                        <label for="newPaidConfirm">Paid Confirm:</label>
+                        <input type="text" id="newPaidConfirm" name="paidConfirm" required><br>
+                        
+                        <label for="newCommission">Commission:</label>
+                        <input type="text" id="newCommission" name="commission" required><br>
+                        
+                        <label for="newExpiryDate">Expiry Date:</label>
+                        <input type="text" id="newExpiryDate" name="expiryDate" required><br>
+                        
+                        <label for="newRemainingDays">Remaining Days:</label>
+                        <input type="text" id="newRemainingDays" name="remainingDays" required><br>
+                        
+                        <button type="submit">Add Member</button>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- Content Section for Daily Paid subscribers List -->
+            <div id="content-dailypaid" class="content-section" style="display: none; margin-top: -50px;">
+                <h2 class="banner-style">Daily Paid subscribers List</h2>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Date</th>
+                            <th>Referral Id</th>
+                            <th>Trading View Id</th>
+                            <th>Phone Number</th>
+                            <th>Email Id</th>
+                            <th>Phone</th>
+                            <th>Pricing</th>
+                            <th>Paid confirm</th>
+                            <th>Commission</th>
+                            <th>Expiry Date</th>
+                            <th>Remaining Days</th>
+                            <th>Action</th>                        
+                        </tr>
+                    </thead>
+
+                    <div style="position: relative; float: left; transform: translateY(-30%);">
+                        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchReferral()" style="height: 35px; width: 200px; border-radius: 20px; padding-left: 10px; padding-right: 10px; box-shadow: 0 1px 2px #2b6180;">
+                        <i class="fa fa-search" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"></i>
+                    </div>
+
+                    <!-- Add Member Button -->
+                   <button id="addMemberBtn" class="btn" onclick="openAddMemberForm()">Add New Member</button>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>23-10-27</td>
+                            <td>TV111</td>
+                            <td>REF789</td>
+                            <td>111-222-3333</td>
+                            <td>raj@gmail.com</td>
+                            <td>23-10-30</td>
+                            <td>3</td>
+                            <td>Yes</td>
+                            <td>₹5</td>
+                            <td>24-10-27</td>
+                            <td>355</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                            <tr>
+                                <td>1</td>
+                                <td>23-10-27</td>
+                                <td>TV111</td>
+                                <td>REF789</td>
+                                <td>111-222-3333</td>
+                                <td>raju@gmail.com</td>
+                                <td>23-10-30</td>
+                                <td>3</td>
+                                <td>Yes</td>
+                                <td>₹5</td>
+                                <td>24-10-27</td>
+                                <td>355</td>
+                                <td>
+                                    <!-- View Icon (Eye) -->
+                                    <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                    <!-- Delete Icon (Trash) -->
+                                    <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>23-10-28</td>
+                                <td>TV112</td>
+                                <td>REF790</td>
+                                <td>444-555-6666</td>
+                                <td>raju@gmail.com</td>
+                                <td>23-10-31</td>
+                                <td>2</td>
+                                <td>No</td>
+                                <td>₹10</td>
+                                <td>24-10-28</td>
+                                <td>356</td>
+                                <td>
+                                    <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                    <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>23-10-29</td>
+                                <td>TV113</td>
+                                <td>REF791</td>
+                                <td>777-888-9999</td>
+                                <td>raju@gmail.com</td>
+                                <td>23-11-01</td>
+                                <td>1</td>
+                                <td>Yes</td>
+                                <td>₹15</td>
+                                <td>24-10-29</td>
+                                <td>357</td>
+                                <td>
+                                    <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                    <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>23-10-30</td>
+                                <td>TV114</td>
+                                <td>REF792</td>
+                                <td>555-666-7777</td>
+                                <td>raju@gmail.com</td>
+                                <td>23-11-02</td>
+                                <td>4</td>
+                                <td>No</td>
+                                <td>₹20</td>
+                                <td>24-10-30</td>
+                                <td>358</td>
+                                <td>
+                                    <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                    <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>23-10-31</td>
+                                <td>TV115</td>
+                                <td>REF793</td>
+                                <td>888-999-0000</td>
+                                <td>raju@gmail.com</td>
+                                <td>23-11-03</td>
+                                <td>5</td>
+                                <td>Yes</td>
+                                <td>₹25</td>
+                                <td>24-10-31</td>
+                                <td>359</td>
+                                <td>
+                                    <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                    <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                                </td>
+                            </tr>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Add Member Button -->
+                <button id="addMemberBtn" class="btn" onclick="openAddMemberForm()">Add New Member</button>
+            </div>
+
+            <!-- Content Section for Total Demo Subscribers List -->
+            <div id="content-totaldemo" class="content-section" style="display: none; margin-top: -50px;">
+                <h2 class="banner-style">Total Demo Subscribers List</h2>
+
+                <!-- Subscribers Table -->
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Date</th>
+                            <th>Trading View Id</th>
+                            <th>Referral Id</th>
+                            <th>Phone Number</th>
+                            <th>Email Id</th>
+                            <th>Expiry Date</th>
+                            <th>Remaining Days</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <div style="position: relative; float: left; transform: translateY(-30%);">
+                        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchReferral()" style="height: 35px; width: 200px; border-radius: 20px; padding-left: 10px; padding-right: 10px; box-shadow: 0 1px 2px #2b6180;">
+                        <i class="fa fa-search" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"></i>
+                    </div>
+
+                    <!-- Add Member Button -->
+                   <button id="addMemberBtn" class="btn" onclick="openAddMemberForm()">Add New Member</button>
+
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>23-10-27</td>
+                            <td>TV111</td>
+                            <td>REF789</td>
+                            <td>111-222-3333</td>
+                            <td>raju@gmail.com</td>
+                            <td>23-10-30</td>
+                            <td>3</td>
+                            <td>
+                                <!-- View Icon (Eye) -->
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <!-- Delete Icon (Trash) -->
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>23-10-28</td>
+                            <td>TV112</td>
+                            <td>REF790</td>
+                            <td>222-333-4444</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-01</td>
+                            <td>5</td>
+                            <td>
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>23-10-29</td>
+                            <td>TV113</td>
+                            <td>REF791</td>
+                            <td>333-444-5555</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-02</td>
+                            <td>2</td>
+                            <td>
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>23-10-30</td>
+                            <td>TV114</td>
+                            <td>REF792</td>
+                            <td>444-555-6666</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-03</td>
+                            <td>4</td>
+                            <td>
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>23-10-31</td>
+                            <td>TV115</td>
+                            <td>REF793</td>
+                            <td>555-666-7777</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-04</td>
+                            <td>6</td>
+                            <td>
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>23-11-01</td>
+                            <td>TV116</td>
+                            <td>REF794</td>
+                            <td>666-777-8888</td>
+                            <td>ramu@gmail.com</td>
+                            <td>23-11-05</td>
+                            <td>7</td>
+                            <td>
+                                <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                                <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+                <!-- Add Member Button -->
+                <button id="addMemberBtn" class="btn" onclick="openAddMemberForm()">Add New Member</button>
+            </div>
+
+            <!-- Modal Structure for View Details -->
+            <div id="viewModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <h3>Subscriber Details</h3>
+                    <p id="modalDetails">Loading details...</p>
+                </div>
+            </div>
+    
+        </div>
+    </div>  
+
+    <script>
+        // Toggle Sidebar Visibility for Mobile
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+        
+        // Show Content Function
+        function showContent(contentId) {
+            // Hide all content sections first
+            const contents = document.querySelectorAll('.content-section');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Show the selected content section
+            const content = document.getElementById(contentId);
+            if (content) {
+                content.style.display = 'block';
+            }
+
+            // Ensure the sidebar's active link is displayed
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active'); // Remove active class from all links
+            });
+            // Add active class to the clicked link
+            const activeLink = Array.from(sidebarLinks).find(link => link.getAttribute('onclick').includes(contentId));
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        
+
+
+        // Sample data for Step Line Chart
+        const stepLineData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Monthly Profit',
+                data: [1000, 1200, 1500, 1800, 2000, 2500],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 2,
+                tension: 0,  // No curve
+                stepped: 'after',  // Step line behavior
+            }]
+        };
+
+        const stepLineConfig = {
+            type: 'line',
+            data: stepLineData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Profit (₹)'  // Label for Y-axis
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '₹' + value.toLocaleString();  // Format the y-axis ticks as ₹ values
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render the Step Line Chart
+        const stepLineChart = new Chart(document.getElementById('stepLineChart'), stepLineConfig);
+
+        // Bar Chart Example
+        var barChart = new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Monthly Revenue',
+                    data: [5000, 4500, 3000, 3500, 4000, 3800],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Pie Chart Example
+        var pieChart = new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Paid Subscribers', 'Demo Subscribers', 'Non-Subscribed'],
+                datasets: [{
+                    data: [100, 50, 30],
+                    backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56'],
+                    hoverBackgroundColor: ['#36A2EB', '#FF6384', '#FFCE56']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Line Chart Example
+        var lineChart = new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Weekly Revenue',
+                    data: [1500, 2000, 2500, 2800],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+    </script>
+    <script>
+        // Function to open the Add Member form
+        function openAddMemberForm() {
+            document.getElementById('addMemberModal').style.display = 'block';
+        }
+    
+        // Function to close the Add Member form
+        function closeAddMemberForm() {
+            document.getElementById('addMemberModal').style.display = 'none';
+        }
+    
+        // Function to open the modal and load details
+        function toggleViewDetails(element) {
+            // Get the row of the clicked icon
+            var row = element.closest('tr');
+            
+            // Get the details from the row
+            var subscriberDetails = {
+                date: row.cells[1].textContent,
+                referralId: row.cells[2].textContent,
+                tradingViewId: row.cells[3].textContent,
+                phoneNumber: row.cells[4].textContent,
+                emailId: row.cells[5].textContent,
+                phone: row.cells[6].textContent,
+                pricing: row.cells[7].textContent,
+                paidConfirm: row.cells[8].textContent,
+                commission: row.cells[9].textContent,
+                expiryDate: row.cells[10].textContent,
+                remainingDays: row.cells[11].textContent
+            };
+            
+            // Populate the modal with subscriber details
+            var modalDetails = `
+                <strong>Date:</strong> ${subscriberDetails.date}<br>
+                <strong>Referral Id:</strong> ${subscriberDetails.referralId}<br>
+                <strong>Trading View Id:</strong> ${subscriberDetails.tradingViewId}<br>
+                <strong>Phone Number:</strong> ${subscriberDetails.phoneNumber}<br>
+                <strong>Email Id:</strong> ${subscriberDetails.emailId}<br>
+                <strong>Phone:</strong> ${subscriberDetails.phone}<br>
+                <strong>Pricing:</strong> ${subscriberDetails.pricing}<br>
+                <strong>Paid Confirm:</strong> ${subscriberDetails.paidConfirm}<br>
+                <strong>Commission:</strong> ${subscriberDetails.commission}<br>
+                <strong>Expiry Date:</strong> ${subscriberDetails.expiryDate}<br>
+                <strong>Remaining Days:</strong> ${subscriberDetails.remainingDays}
+            `;
+            document.getElementById('modalDetails').innerHTML = modalDetails;
+            
+            // Show the modal
+            document.getElementById('viewModal').style.display = 'block';
+        }
+
+        // Function to delete the subscriber
+        function deleteSubscriber(element) {
+            // Get the row of the clicked delete icon
+            var row = element.closest('tr');
+            
+            // Remove the row from the table
+            row.remove();
+        }
+    
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('viewModal').style.display = 'none';
+        }
+    
+        // Close the modal if the user clicks anywhere outside the modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('viewModal')) {
+                closeModal();
+            }
+            if (event.target == document.getElementById('addMemberModal')) {
+                closeAddMemberForm();
+            }
+        }
+    
+        
+        
+    </script>
+    <script>
+        // Function to open the Add Member modal
+        function openAddMemberForm() {
+            document.getElementById("addMemberModal").style.display = "block";
+        }
+
+        // Function to close the Add Member modal
+        function closeAddMemberForm() {
+            document.getElementById("addMemberModal").style.display = "none";
+        }
+
+        // Function to handle form submission
+        document.getElementById('addMemberForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            // Capture the form data
+            var newDate = document.getElementById("newDate").value;
+            var newReferralId = document.getElementById("newReferralId").value;
+            var newTradingViewId = document.getElementById("newTradingViewId").value;
+            var newPhoneNumber = document.getElementById("newPhoneNumber").value;
+            var newEmailId = document.getElementById("newEmailId").value;
+            var newPhone = document.getElementById("newPhone").value;
+            var newPricing = document.getElementById("newPricing").value;
+            var newPaidConfirm = document.getElementById("newPaidConfirm").value;
+            var newCommission = document.getElementById("newCommission").value;
+            var newExpiryDate = document.getElementById("newExpiryDate").value;
+            var newRemainingDays = document.getElementById("newRemainingDays").value;
+
+            // Create a new row for the table
+            var newRow = document.createElement("tr");
+
+            // Add cells to the new row with the form values
+            newRow.innerHTML = `
+                <td>${document.querySelectorAll("#content-totalpaid table tbody tr").length + 1}</td>
+                <td>${newDate}</td>
+                <td>${newReferralId}</td>
+                <td>${newTradingViewId}</td>
+                <td>${newPhoneNumber}</td>
+                <td>${newEmailId}</td>
+                <td>${newPhone}</td>
+                <td>${newPricing}</td>
+                <td>${newPaidConfirm}</td>
+                <td>${newCommission}</td>
+                <td>${newExpiryDate}</td>
+                <td>${newRemainingDays}</td>
+                <td>
+                    <i class="fa fa-eye" aria-hidden="true" onclick="toggleViewDetails(this)"></i>
+                    <i class="fa fa-trash" aria-hidden="true" onclick="deleteSubscriber(this)"></i>
+                </td>
+            `;
+
+            // Add the new row to the table body
+            document.querySelector("#content-totalpaid table tbody").appendChild(newRow);
+
+            // Close the modal
+            closeAddMemberForm();
+
+            // Optionally, reset the form fields
+            document.getElementById('addMemberForm').reset();
+        });
+    </script>
+    <script>
+        // Function to toggle the view details modal
+        function toggleViewDetails(element) {
+            // Get the row that contains the clicked button
+            var row = element.closest("tr");
+            
+            // Get the subscriber details from the row
+            var siNo = row.cells[0].textContent;
+            var date = row.cells[1].textContent;
+            var tradingViewId = row.cells[2].textContent;
+            var referralId = row.cells[3].textContent;
+            var phoneNumber = row.cells[4].textContent;
+            var emailId = row.cells[5].textContent;
+            var expiryDate = row.cells[6].textContent;
+            var remainingDays = row.cells[7].textContent;
+            
+            // Populate the modal with the subscriber details
+            var modalDetails = document.getElementById("modalDetails");
+            modalDetails.innerHTML = `
+                <strong>SI.No:</strong> ${siNo} <br>
+                <strong>Date:</strong> ${date} <br>
+                <strong>Trading View Id:</strong> ${tradingViewId} <br>
+                <strong>Referral Id:</strong> ${referralId} <br>
+                <strong>Phone Number:</strong> ${phoneNumber} <br>
+                <strong>Email Id:</strong> ${emailId} <br>
+                <strong>Expiry Date:</strong> ${expiryDate} <br>
+                <strong>Remaining Days:</strong> ${remainingDays} <br>
+            `;
+            
+            // Show the modal
+            var modal = document.getElementById("viewModal");
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            var modal = document.getElementById("viewModal");
+            modal.style.display = "none";
+        }
+
+    </script>
+    <script>
+        // Function to search referral IDs
+        function searchReferral() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("referralIds");
+            li = ul.getElementsByTagName("li");
+            let noResults = true;
+
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                    noResults = false;
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+
+            // Display "No Results" message if no referral IDs are found
+            var noResultsMessage = document.getElementById("noResultsMessage");
+            if (noResults) {
+                noResultsMessage.style.display = "block";
+            } else {
+                noResultsMessage.style.display = "none";
+            }
+        }
+
+        // Function to show subscribers for a selected referral ID
+        function showSubscribers(referralId) {
+            // Simulate fetching data for the selected referral
+            var subscribers = [
+            { id: 'S001', phone: '1234567890', email: 'subscriber1@example.com', status: 'Active' },
+            { id: 'S002', phone: '0987654321', email: 'subscriber2@example.com', status: 'Inactive' },
+            { id: 'S003', phone: '1112233445', email: 'subscriber3@example.com', status: 'Active' },
+            { id: 'S004', phone: '2233445566', email: 'subscriber4@example.com', status: 'Inactive' },
+            { id: 'S005', phone: '3344556677', email: 'subscriber5@example.com', status: 'Active' },
+            { id: 'S006', phone: '4455667788', email: 'subscriber6@example.com', status: 'Inactive' },
+            { id: 'S007', phone: '5566778899', email: 'subscriber7@example.com', status: 'Active' },
+            { id: 'S008', phone: '6677889900', email: 'subscriber8@example.com', status: 'Inactive' },
+            { id: 'S009', phone: '7788990011', email: 'subscriber9@example.com', status: 'Active' },
+            { id: 'S010', phone: '8899001122', email: 'subscriber10@example.com', status: 'Inactive' },
+            { id: 'S011', phone: '9900112233', email: 'subscriber11@example.com', status: 'Active' },
+            { id: 'S012', phone: '1011122334', email: 'subscriber12@example.com', status: 'Inactive' },
+            { id: 'S013', phone: '2122233445', email: 'subscriber13@example.com', status: 'Active' },
+            { id: 'S014', phone: '3233344556', email: 'subscriber14@example.com', status: 'Inactive' }
+            ];
+            
+            // Display the referral ID in the banner
+            document.getElementById("referralIdDisplay").innerText = referralId;
+
+            // Populate the subscriber table
+            var tableBody = document.getElementById("subscriberTableBody");
+            tableBody.innerHTML = ''; // Clear any previous data
+            subscribers.forEach((subscriber, index) => {
+                var row = tableBody.insertRow();
+                row.insertCell(0).textContent = index + 1;
+                row.insertCell(1).textContent = subscriber.id;
+                row.insertCell(2).textContent = subscriber.phone;
+                row.insertCell(3).textContent = subscriber.email;
+                row.insertCell(4).textContent = subscriber.status;
+            });
+
+            // Show the referral subscribers list and hide the main list
+            document.getElementById("mainUsersList").style.display = "none";
+            document.getElementById("content-referralSubscribersList").style.display = "block";
+        }
+
+        // Function to go back to the main users list
+        function backToMainUsersList() {
+            document.getElementById("content-referralSubscribersList").style.display = "none";
+            document.getElementById("mainUsersList").style.display = "block";
+        }
+
+    </script>
+    <script>
+        // Mock subscriber data for each referral ID
+        const subscribersData = {
+            'REF123': [
+                { id: 'SUB001', phone: '123-456-7890', email: 'sub1@example.com', status: 'Active' },
+                { id: 'SUB002', phone: '123-456-7891', email: 'sub2@example.com', status: 'Inactive' },
+                { id: 'SUB003', phone: '123-456-7892', email: 'sub3@example.com', status: 'Active' },
+            ],
+            'REF456': [
+                { id: 'SUB004', phone: '123-456-7893', email: 'sub4@example.com', status: 'Active' },
+                { id: 'SUB005', phone: '123-456-7894', email: 'sub5@example.com', status: 'Active' },
+            ],
+            'REF789': [
+                { id: 'SUB006', phone: '123-456-7895', email: 'sub6@example.com', status: 'Active' },
+                { id: 'SUB007', phone: '123-456-7896', email: 'sub7@example.com', status: 'Inactive' },
+                { id: 'SUB008', phone: '123-456-7897', email: 'sub8@example.com', status: 'Active' },
+            ],
+            // More referral IDs and subscriber data can be added here
+        };
+    
+        function showSubscribers(referralId) {
+            // Show the subscriber list for the selected referral ID
+            document.getElementById('mainUsersList').style.display = 'none';
+            document.getElementById('content-referralSubscribersList').style.display = 'block';
+            document.getElementById('referralIdDisplay').innerText = referralId;
+    
+            // Populate the subscriber details
+            const subscribers = subscribersData[referralId] || [];
+            const tableBody = document.getElementById('subscriberTableBody');
+            tableBody.innerHTML = '';  // Clear previous rows
+    
+            subscribers.forEach((subscriber, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${subscriber.id}</td>
+                    <td>${subscriber.phone}</td>
+                    <td>${subscriber.email}</td>
+                    <td>${subscriber.status}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    
+        function backToMainUsersList() {
+            // Go back to the main users list
+            document.getElementById('mainUsersList').style.display = 'block';
+            document.getElementById('content-referralSubscribersList').style.display = 'none';
+        }
+    
+        function searchReferral() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const table = document.getElementById("referralTable");
+            const tr = table.getElementsByTagName("tr");
+            let found = false;
+    
+            for (let i = 1; i < tr.length; i++) {
+                const td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    const textValue = td.textContent || td.innerText;
+                    if (textValue.toLowerCase().indexOf(input) > -1) {
+                        tr[i].style.display = "";
+                        found = true;
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+    
+            // Show "No Referral IDs found" message if no match
+            const noResultsMessage = document.getElementById("noResultsMessage");
+            if (!found) {
+                noResultsMessage.style.display = "block";
+            } else {
+                noResultsMessage.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        function signOut() {
+            // Ask for confirmation
+            const confirmed = confirm("Are you sure you want to sign out?");
+            
+            if (confirmed) {
+                // If the user clicks OK, proceed with signout actions
+                sessionStorage.clear();  // clears sessionStorage
+                localStorage.clear();    // clears localStorage
+    
+                // Redirect to the login page or home page
+                window.location.href = 'login.html';  // replace with your actual login page
+    
+                // Optionally, you can alert the user about signing out
+                // alert('You have been signed out!');
+            } else {
+                // If the user clicks Cancel, do nothing
+                return;
+            }
+        }
+    </script>
+    
+</body>
+</html>

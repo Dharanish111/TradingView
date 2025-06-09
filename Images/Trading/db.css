@@ -1,0 +1,373 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /* Ensures a horizontal layout */
+    height: 100vh; /* Full viewport height */
+}
+
+.sidebar {
+    width: 220px; /* Ensure the sidebar has a fixed width */
+    background-color: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #181616;
+    box-sizing: border-box;
+    height: 100vh; /* Full height */
+    display: flex;
+    flex-direction: column; /* Stacked vertically */
+    flex-shrink: 0; /* Prevent the sidebar from shrinking */
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 4px; /* Reduced padding */
+    border-radius: 5px;
+    font-size: 19px; /* Reduced size */
+}
+
+#referralId {
+    color: #130a02;
+    margin-left: 0px;
+    font-size: 20px; /* You can adjust the size as needed */
+    font-weight: 550; /* Optional: makes the text bold */
+}
+
+#userId {
+    color: #1f1205;
+    margin-left: 5px;
+    font-size: 20px; /* You can adjust the size as needed */
+    font-weight: 550; /* Optional: makes the text bold */
+}
+
+/* Referral Icon */
+.icon-referral {
+    font-size: 36px; /* Larger size for referral icon */
+    color: #286ea7fa; /* Green color */
+    font-size: 20px; /* You can adjust the size as needed */
+    margin-left: 30px;
+}
+
+/* User Icon */
+.icon-user {
+    font-size: 30px; /* Larger size for user icon */
+    color: #286ea7fa; /* Blue color */
+    font-size: 20px; /* You can adjust the size as needed */
+    margin-left: 30px;
+}
+
+.sidebar a:hover {
+    background-color: #9a9e9e4d; /* Or any color of your choice */
+    border: 2px solid #9a9e9e4d;
+}
+
+.content {
+    margin-top: 100px; /* Adjust the content area to the right of the sidebar */
+    margin-left: 0px;
+    padding: 20px;
+    height: 100vh;
+}
+
+.dashboard-header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: last baseline;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #1a0c0c;
+    margin-bottom: 0px;
+    margin-left: 220px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+}
+
+.search-bar {
+    margin-left: 700px;  /* Push the search bar to the right */
+    margin-top: -50px;   /* Move the search bar upwards (adjust as needed) */
+}
+
+.search-bar input {
+    width: 230px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.logo {
+    width: 150px;
+    height: 50px;
+}
+
+.metrics {
+    display: flex;
+    margin-top: -20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: left;
+    align-items: flex-start;
+    flex-grow: 1; /* Allow this container to take available space */
+}
+
+.metric-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 120px; /* Fixed width for each metric */
+    height: 55px; /* Adjust height as needed */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.metric-box h3 {
+    font-size: 14px;
+    color: #333;
+    margin: 4px 0;
+}
+
+.metric-box p {
+    font-size: 12px;
+    color: #2d2d2d;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.icon {
+    font-size: 15px;
+    color: #1d221d;
+    margin-bottom: 6px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.metric-box:hover .icon {
+    color: #0a0e0b;
+}
+
+.search-bar {
+    margin-bottom: 0px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+#profit-details {
+    display: none;
+    transition: display 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metrics > .metric-box:nth-child(n+4) {
+    grid-column: span 2;
+}
+
+/* Overall Chart Container Styling */
+.graphs {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Step Line Chart Specific Styling */
+.chart-container#stepLineChart {
+    width: 48%;
+    height: 300px; /* Adjust height as needed */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Line Chart Specific Styling */
+.chart-container#lineChart {
+    width: 100%;
+    height: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Bar Chart Specific Styling */
+.chart-container#barChart {
+    width: 100%;
+    height: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Pie Chart Specific Styling */
+.chart-container#pieChart {
+    width: 100%;
+    height: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: If you want to add responsiveness */
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Main Users List */
+#mainUsersList {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#mainUsersList h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+#mainUsersList ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+#mainUsersList ul li {
+    display: block; /* Changed from inline-block to block */
+    margin: 35px 0; /* Add vertical margin to space out items */
+    
+}
+
+#mainUsersList ul li a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#mainUsersList ul li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.styled-button {
+    background-color: #072430b0;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;   
+  }
+  
+.styled-button:hover {
+  background-color: #072430c2;
+}
+
+/* Hamburger icon styling */
+.hamburger-container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 21px;
+    margin-left: 700px;
+  }
+  
+.hamburger {
+  background-color: #333;
+  margin-bottom: 50x;
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
+}
+  
+.sidebar.active {
+  left: 0; /* Show the sidebar */
+}
+
+/* To display hamburger when sidebar is toggled */
+.sidebar.active + .content {
+  margin-left: 250px; /* Shift the content to the right */
+}   
+
+/* Adjusting the content when sidebar is visible */
+.content {
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}

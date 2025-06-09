@@ -1,0 +1,122 @@
+<h3><i class="fas fa-user icon-user"></i> <span id="userId"></span></h3>
+<h3><i class="fas fa-user-tag icon-referral"></i> <span id="referralId"></span></h3>
+
+#2b6180
+#796fd1
+
+/* Specific Styles for Daily Demo Subscribers List Section */
+#content-demo .banner-style {
+    color: #ffffff; /* Change the banner text color */
+    font-size: 2em;
+    text-align: center;
+    padding: 20px;
+    background-color: #796fd1; /* Change background color of the banner */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#content-demo .btn {
+    background-color: #3bb478; /* Change button background color */
+    color: rgb(255, 255, 255); /* Change button text color */
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#content-demo .btn:hover {
+    background-color: #24965d; /* Darken the button color when hovered */
+}
+
+/* Table Styles for Daily Demo Subscribers List */
+#content-demo table th {
+    background-color: #fcf0af; /* Change background color of the table header */
+    color: #333; /* Change text color of the table header */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#content-demo table td {
+    padding: 10px;
+    text-align: center;
+    color: #555; /* Change text color of table cells */
+}
+
+#content-demo table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row background color */
+}
+
+#content-demo table tr:hover {
+    background-color: #f1f1f1; /* Change row color on hover */
+}
+
+
+#content-demo #searchInput:focus {
+    outline: none;
+    border-color: #007BFF; /* Change border color when the input is focused */
+}
+
+/* Search Icon Style for Daily Demo Subscribers List */
+#content-demo .fa-search {
+    font-size: 18px;
+    color: #2f3031; /* Change search icon color */
+}
+
+<!-- Main Users List -->
+<div id="mainUsersList" style="display: none; width: 1150px; margin-top: -10px;">
+    <h2>Main Users List</h2>
+    <input type="text" id="searchInput" placeholder="Search for Referral ID..." onkeyup="searchReferral()" style="float: right; margin-top: -60px; height: 25px; width: 200px; border-radius: 6px;  padding-left: 10px;">
+    <div id="noResultsMessage" style="display: none; color: red; margin-top: 50px; margin-left: 500px;">No Referral IDs found.</div>
+    <ul id="referralIds">
+        <!-- Sample Referral IDs, in real scenario, these will be dynamically generated from a database -->
+        <li><a href="#" onclick="showSubscribers('REF123')">REF123</a></li>
+        <li><a href="#" onclick="showSubscribers('REF456')">REF456</a></li>
+        <li><a href="#" onclick="showSubscribers('REF789')">REF789</a></li>
+        <li><a href="#" onclick="showSubscribers('REF101')">REF101</a></li>
+        <li><a href="#" onclick="showSubscribers('REF102')">REF102</a></li>
+        <li><a href="#" onclick="showSubscribers('REF103')">REF103</a></li>
+        <li><a href="#" onclick="showSubscribers('REF104')">REF104</a></li>
+        <li><a href="#" onclick="showSubscribers('REF105')">REF105</a></li>
+        <li><a href="#" onclick="showSubscribers('REF106')">REF106</a></li>
+        <li><a href="#" onclick="showSubscribers('REF107')">REF107</a></li>
+        <li><a href="#" onclick="showSubscribers('REF108')">REF108</a></li>
+        <li><a href="#" onclick="showSubscribers('REF109')">REF109</a></li>
+        <li><a href="#" onclick="showSubscribers('REF110')">REF110</a></li>
+        <li><a href="#" onclick="showSubscribers('REF111')">REF111</a></li>
+        <li><a href="#" onclick="showSubscribers('REF112')">REF112</a></li>
+        <li><a href="#" onclick="showSubscribers('REF113')">REF113</a></li>
+        <li><a href="#" onclick="showSubscribers('REF114')">REF114</a></li>
+        <li><a href="#" onclick="showSubscribers('REF115')">REF115</a></li>
+        <li><a href="#" onclick="showSubscribers('REF116')">REF116</a></li>
+        <li><a href="#" onclick="showSubscribers('REF117')">REF117</a></li>
+        <li><a href="#" onclick="showSubscribers('REF118')">REF118</a></li>
+        <li><a href="#" onclick="showSubscribers('REF119')">REF119</a></li>
+        <li><a href="#" onclick="showSubscribers('REF120')">REF120</a></li>
+        <li><a href="#" onclick="showSubscribers('REF121')">REF121</a></li>
+        <li><a href="#" onclick="showSubscribers('REF122')">REF122</a></li>
+        <li><a href="#" onclick="showSubscribers('REF123')">REF123</a></li>
+    </ul>
+</div>
+
+<!-- Referral Subscribers List -->
+<div id="content-referralSubscribersList" class="content-section" style="display: none; width: 1150px; margin-top: -30px;">
+    <h2 class="banner-style">Subscribers under Referral ID: <span id="referralIdDisplay"></span></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>SI.No</th>
+                <th>Subscriber ID</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Subscription Status</th>
+            </tr>
+        </thead>
+        <tbody id="subscriberTableBody">
+            <!-- Subscribers will be dynamically inserted here -->
+        </tbody>
+    </table>
+    <button class="styled-button" onclick="backToMainUsersList()">Back to Main Users List</button>
+</div>

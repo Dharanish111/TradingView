@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral ID Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+        }
+        .not-found {
+            color: red;
+        }
+        .found {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Search Referral ID</h1>
+        <input type="text" id="referralId" placeholder="Enter Referral ID">
+        <button onclick="searchReferral()">Search</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const users = [
+            { name: "Alice", referral_id: "R123" },
+            { name: "Bob", referral_id: "R124" },
+            { name: "Charlie", referral_id: "R125" },
+            { name: "David", referral_id: "R126" }
+        ];
+
+        function searchReferral() {
+            const referralId = document.getElementById('referralId').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (referralId === "") {
+                resultDiv.innerHTML = "Please enter a Referral ID.";
+                resultDiv.className = "result not-found";
+                return;
+            }
+
+            const user = users.find(user => user.referral_id === referralId);
+            
+            if (user) {
+                resultDiv.innerHTML = `User found: ${user.name}, Referral ID: ${user.referral_id}`;
+                resultDiv.className = "result found";
+            } else {
+                resultDiv.innerHTML = "Referral ID not found.";
+                resultDiv.className = "result not-found";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+

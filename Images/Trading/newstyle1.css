@@ -1,0 +1,953 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /* Ensures a horizontal layout */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -264px; /* Initially hide the sidebar off the screen */
+    width: 264px;
+    height: 100vh; /* Make the sidebar take up the full viewport height */
+    background-color: #ffffff;
+    transition: left 0.3s ease;
+    padding-top: 0px;
+    margin-top: 81px;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1); /* Adds a shadow effect to the right */
+    z-index: 1; /* This will ensure the sidebar is below the header */
+    overflow-y: auto; /* Enables vertical scrolling */
+}
+
+body, html {
+    height: 100%; /* Ensure the body and html are 100% height to support the sidebar */
+    margin: 0; /* Remove default margin */
+}
+
+.sidebar.active {
+    left: 0; /* Move the sidebar into view */
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    justify-content: center;
+    width: 210px;
+    margin-top: 12px;
+    margin-left: 11px;
+    padding: 13px; /* Reduced padding */
+    font-size: 16px; /* Reduced size */
+    font-weight: 540; /* Optional: makes the text bold */
+    border-radius: 6px;  
+    background-color: #f7f7f7;  
+    box-shadow: 0 1px 5px #f7f7f7, 0 -1px 5px #f7f7f7, 1px 0 5px #f7f7f7, -1px 0 5px #f7f7f7;
+}
+
+/* Hover effect for the first item in the sidebar */
+.sidebar li:nth-child(1) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #eaf1f7; /* Hover color updated to #eaf1f7 */
+}
+
+/* Hover effect for the second item in the sidebar */
+.sidebar li:nth-child(2) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #eaf1f7; /* Hover color for 'Main users' */
+}
+
+/* Hover effect for the third item in the sidebar */
+.sidebar li:nth-child(3) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #eaf1f7; /* Hover color for 'Table Control' */
+}
+
+/* Hover effect for the fourth item in the sidebar */
+.sidebar li:nth-child(4) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #eaf1f7; /* Hover color for 'Total Paid subscribers' */
+}
+
+/* Hover effect for the fifth item in the sidebar */
+.sidebar li:nth-child(5) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #eaf1f7; /* Hover color for 'Daily Paid subscribers' */
+}
+
+/* Hover effect for the sixth item in the sidebar */
+.sidebar li:nth-child(6) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #eaf1f7; /* Hover color for 'Daily Demo subscribers' */
+}
+
+/* Hover effect for the seventh item in the sidebar */
+.sidebar li:nth-child(7) a:hover {
+    box-shadow: 0 1px 5px #fa6e6e, 0 -1px 5px #fa6e6e, 1px 0 5px #fa6e6e, -1px 0 5px #fa6e6e;
+    background-color: #fa6e6e; /* Hover color for 'Total Demo subscribers' */
+}
+
+/* Hover effect for the eighth item in the sidebar */
+.sidebar li:nth-child(8) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #eaf1f7; /* Hover color for 'Home Page Control' */
+}
+
+/* Hover effect for the ninth item in the sidebar */
+.sidebar li:nth-child(9) a:hover {
+    box-shadow: 0 1px 5px #eaf1f7, 0 -1px 5px #eaf1f7, 1px 0 5px #eaf1f7, -1px 0 5px #eaf1f7;
+    background-color: #f7eaea; /* Hover color for 'Signout' */
+}
+
+.sidebar a:hover {
+    font-weight: bold; /* Optional: makes the text bold */
+
+}
+
+.fas {
+    font-size: 20px; /* Adjust size of the icons */
+    color: #0c86eb; /* Set default color of the icons */
+    margin-right: 10px; /* Add some space between the icon and text */
+}
+
+.fas:hover {
+    transition: left 0.3s ease;
+    font-weight: bold; /* Optional: makes the text bold */
+
+}
+
+/* Container for profile picture and text */
+.profile-pic {
+    width: 90px; /* Set the width of the profile picture */
+    height: 90px; /* Set the height of the profile picture */
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure the image covers the entire area */
+    border: 1px solid #e8eff5; /* Optional: border around the image */
+    margin-left: 20px; /* Add space between the image and text */
+    margin-top: 10px;
+}
+
+#userId {
+    color: #1f0705;
+    font-size: 20px; /* You can adjust the size as needed */
+    font-weight: 550; /* Optional: makes the text bold */
+    float: inline-start;
+    margin-top: -90px;
+    margin-left: 155px;
+    border-radius: 4px;
+    background-color: #e2e799;
+}
+
+#referralId {
+    color: #130a02;
+    font-size: 20px; /* You can adjust the size as needed */
+    font-weight: 550; /* Optional: makes the text bold */
+    margin-top: -55px;
+    margin-left: 155px;
+    float: inline-start;
+
+}
+
+
+/* User Icon */
+.icon-user {
+    font-size: 30px; /* Larger size for user icon */
+    color: #286ea7fa; /* Blue color */
+    font-size: 20px; /* You can adjust the size as needed */
+    margin-top: 20px;
+}
+
+/* Referral Icon */
+.icon-referral {
+    font-size: 36px; /* Larger size for referral icon */
+    color: #286ea7fa; /* Green color */
+    font-size: 20px; /* You can adjust the size as needed */
+}
+
+
+
+.content {
+    margin-top: 90px; /* Adjust the content area to the right of the sidebar */
+    margin-left: 0px;
+    padding: 20px;
+    height: 100vh;
+}
+
+.dashboard-header {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items:center;
+    gap: 15px;
+    padding: 1px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(214, 210, 210, 0.5);
+    z-index: 10;
+}
+
+.dashboard-header h1 {
+    margin-left: 180px;
+    margin-top: 0px;
+}
+
+.header-buttons {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping of buttons to the next line */
+    overflow-x: auto;  /* Adds horizontal scrolling */
+    gap: 10px; /* Optional: adds space between buttons */
+    padding: 10px; /* Optional: adds padding around the container */
+    border-radius: 8px;
+}
+
+
+.header-buttons button {
+    flex: 0 0 auto; /* Prevent buttons from resizing and shrinking */
+    min-width: 150px; /* Set a minimum width for buttons */
+    padding: 9px; /* Optional: adds padding to buttons */
+    border-radius: 8px;
+}
+
+.header-buttons button:nth-child(2) {
+    background-color: purple;
+    border: none;
+    width: 160px;
+    color: white;
+}
+
+.header-buttons button:nth-child(2):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(3) {
+    background-color: lightgreen;
+    width: 10px;
+    border: none;
+}
+
+.header-buttons button:nth-child(3):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(4) {
+    background-color: lightblue;
+    width: 70px;
+    border: none;
+}
+
+.header-buttons button:nth-child(4):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(5) {
+    background-color: lightpink;
+    width: 70px;
+    border: none;
+}
+
+.header-buttons button:nth-child(5):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(6) {
+    background-color: rgb(250, 250, 153);
+    width: 200px;
+    border: none;
+}
+
+.header-buttons button:nth-child(6):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(7) {
+    background-color: lightcoral;
+    width: 220px;
+    border: none;
+}
+
+.header-buttons button:nth-child(7):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(8) {
+    background-color: rgb(241, 191, 219);
+    width: 200px;
+    border: none;
+}
+
+.header-buttons button:nth-child(8):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(9) {
+    background-color: lightcyan;
+    width: 210px;
+    border: none;
+}
+
+.header-buttons button:nth-child(9):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(10) {
+    background-color: rgb(247, 195, 152);
+    width: 70px;
+    border: none;
+}
+
+.header-buttons button:nth-child(10):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(11) {
+    background-color: lightsteelblue;
+    border: none;
+}
+
+.header-buttons button:nth-child(11):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(12) {
+    background-color: lightgray;
+    width: 30px;
+    border: none;
+}
+
+.header-buttons button:nth-child(12):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.header-buttons button:nth-child(13) {
+    background-color: lightsalmon;
+    border: none;
+}
+
+.header-buttons button:nth-child(13):hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+
+.logo {
+    width: 200px;
+    height: 50px;
+    margin-top: -20px;
+    float: left;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif; /* Replace with your desired font */
+}
+
+.metrics {
+    display: flex;
+    margin-top: -20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: left;
+    align-items: flex-start;
+    flex-grow: 1; /* Allow this container to take available space */
+}
+
+.metric-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 135px; /* Fixed width for each metric */
+    height: 80px; /* Adjust height as needed */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.metric-box h3 {
+    font-size: 14px;
+    color: #333;
+    margin: 4px 0;
+}
+
+.metric-box p {
+    font-size: 12px;
+    color: #2d2d2d;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.icon {
+    font-size: 15px;
+    color: #1d221d;
+    margin-bottom: 6px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.metric-box:hover .icon {
+    color: #0a0e0b;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: -10px;
+   
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+    font-size: 13px;
+}
+
+th {
+    color: #181717;
+    background-color: #fa7fa48a;
+}
+
+#profit-details {
+    display: none;
+    transition: display 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metrics > .metric-box:nth-child(n+4) {
+    grid-column: span 2;
+}
+
+/* Overall Chart Container Styling */
+.graphs {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Step Line Chart Specific Styling */
+.chart-container#stepLineChart {
+    width: 48%;
+    height: 300px; /* Adjust height as needed */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Line Chart Specific Styling */
+.chart-container#lineChart {
+    width: 100%;
+    height: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Bar Chart Specific Styling */
+.chart-container#barChart {
+    width: 100%;
+    height: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Pie Chart Specific Styling */
+.chart-container#pieChart {
+    width: 100%;
+    height: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: If you want to add responsiveness */
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Main Users List */
+#mainUsersList {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#mainUsersList h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+
+#mainUsersList ul {
+    display: flex; /* Use flexbox to arrange items in a row */
+    flex-wrap: wrap; /* Optional: allows items to wrap to the next line if they overflow */
+    padding: 0; /* Optional: remove default padding */
+    margin: 0; /* Optional: remove default margin */
+    
+}
+
+#mainUsersList ul li {
+    display: block; /* Changed from inline-block to block */
+    margin: 25px 15px; /* Add vertical margin to space out items */
+    
+}
+
+#mainUsersList ul li a {
+    text-decoration: none;
+    color: #fabb73;
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#mainUsersList ul li a:hover {
+    background-color: #fabb73;
+    color: white;
+}
+
+.styled-button {
+    background-color: #072430b0;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;   
+  }
+  
+.styled-button:hover {
+  background-color: #072430c2;
+}
+
+#content-referralSubscribersList h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+
+#content-totalpaid h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+#content-dailypaid h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+#content-totaldemo h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+#content-demo h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+/* Hamburger container */
+.hamburger-container {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger {
+    height: 4px;
+    width: 30px;
+    background-color: #333;
+    border-radius: 4px;
+}
+  
+.sidebar.active {
+  left: 0; /* Show the sidebar */
+}
+
+/* To display hamburger when sidebar is toggled */
+.sidebar.active + .content {
+  margin-left: 264px; /* Shift the content to the right */
+}   
+
+/* Adjusting the content when sidebar is visible */
+.content {
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}
+
+/* General Table Styles */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table thead {
+    color: white;
+    text-align: left;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.styled-table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #fff;
+}
+
+.styled-table td {
+    font-size: 14px;
+    color: #333;
+}
+
+.styled-table th {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+/* Add some space around the table for a cleaner layout */
+.content-section {
+    padding: 20px;
+    background-color: #ffffffb0;
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style for the button container */
+.button-container {
+    margin: 20px 0;
+    text-align: left;
+}
+
+
+/* Make the icons appear side by side with some space */
+td i {
+    color: #796fd1; /* change color on hover */
+
+    margin-right: 0px; /* space between icons */
+    cursor: pointer; /* make them look clickable */
+    font-size: 22px; /* size of the icons */
+}
+
+/* Optional: Hover effect for icons */
+td i:hover {
+    color: #796fd1; /* change color on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.banner-style {
+    background-color: #796fd1; /* Green background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Padding for a more banner-like look */
+    text-align: center; /* Centered text */
+    font-size: 24px; /* Larger text */
+    font-weight: bold; /* Bold text */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px); /* Apply a 5px blur to the background */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    margin-top: 150px;
+
+}
+
+.close-btn {
+    background-color: #f44336;
+    font-size: 26px;
+    color: white;
+    border: none;
+    margin-top: 0px;
+    padding: 3px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Center the modal header */
+.modal-content h3 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+    margin-top: 8px;
+}
+
+/* Padding for details inside modal */
+#modalDetails {
+    padding: 10px;
+    line-height: 1.6;
+}
+
+
+
+/* Styling for the Add Member Button */
+#addMemberBtn {
+    background-color: #3bb478; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: -7px;
+    margin-bottom: 6px;
+    float: right;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#addMemberBtn:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    background-color: #24965d; /* Darken the button color when hovered */
+}
+
+/* Styling for the Add Member Modal */
+#addMemberModal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if the content overflows */
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+#addMemberModal .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Adjust width to your liking */
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#addMemberModal .modal-content h3 {
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* Close Button in Modal */
+.addMemberModal .close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.addMemberModal .close-btn:hover,
+.addMemberModal .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Inputs and Labels */
+#addMemberForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+#addMemberForm label {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+#addMemberForm input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.3s ease;
+}
+
+#addMemberForm input:focus {
+    border-color: #2c3d53;
+    outline: none;
+}
+
+#addMemberForm button {
+    background-color: #4b6c97;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#addMemberForm button:hover {
+    background-color: #3b5f8f;
+}
+
+/* Responsive Design for the Modal */
+@media screen and (max-width: 600px) {
+    #addMemberModal .modal-content {
+        width: 90%;
+    }
+
+    #addMemberForm {
+        gap: 8px;
+    }
+}
+
+
+
+
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile-pic {
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    margin-right: 10px; /* Space between image and text */
+    border-radius: 50%; /* To make the profile picture circular */
+}
+.text-info {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+}
+h3 {
+    margin: 5px 0;
+}
+
+.icon-user, .icon-referral {
+    margin-right: 4px; /* Add space between icon and text */
+}
+
+
+
+/* Styling for the candlestick and OHLC charts */
+#candlestick-chart, #ohlc-chart {
+    width: 100%;
+    height: 500px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow-y: auto; /* Allow vertical scroll */
+}
